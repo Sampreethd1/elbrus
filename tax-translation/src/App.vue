@@ -49,6 +49,7 @@
 
 .content-wrapper {
   display: flex;
+  flex: 1;
 }
 
 .main-content {
