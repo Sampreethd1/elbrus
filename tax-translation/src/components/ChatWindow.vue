@@ -9,7 +9,7 @@
 
 <script setup>
 import { ref } from "vue";
-import { useChatStore } from "@/store/useChatStore";
+import { useChatStore } from "@/src/store/useChatStore";
 
 const chatStore = useChatStore();
 const message = ref("");

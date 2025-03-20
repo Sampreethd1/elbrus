@@ -1,16 +1,25 @@
 import { defineStore } from "pinia";
 
-export const chatStore = defineStore("chatStore", {
-    state: () => ({
-        activeFile: null,
-        messages: [] as String[],
-    }),
-    actions: {
-        setActiveFile(file: any) {
-            this.activeFile = file;
-        },
-        addMessage(message: string) {
-            this.messages.push(message);
-        },
-    },
+export const useChatStore = defineStore("chatStore", () => {
+  // #region State
+  const state = {
+    activeFile: null,
+    messages: [] as string[],
+  };
+
+  // #region Getters
+
+  // #region Actions
+  function setActiveFile(file: any) {
+    state.activeFile = file;
+  }
+  function addMessage(msg: string) {
+    state.messages.push(msg);
+  }
+
+  return {
+    addMessage,
+    setActiveFile,
+    state,
+  };
 });
