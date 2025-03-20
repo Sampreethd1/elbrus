@@ -6,9 +6,9 @@
           <h3 class="text-heading-3">Chat Messages</h3>
         </div>
         <div class="text-text-secondary">
-          <p v-for="(msg, index) in getMessage" :key="index">
-            {{ msg }}
-          </p>
+          
+        <div v-for="(msg, index) in getMessage" :key="index" class="text-line"> {{ msg }}</div>
+         
         </div>
       </template>
     </VCard>
@@ -24,3 +24,11 @@ import { VCard } from "@oneport/core-ui";
 const { getMessage } = storeToRefs(useChatStore());
 
 </script>
+<style scoped>
+.text-line {
+  height: 20px;
+  background-color: #ccc;
+  margin-bottom: 10px;
+  width: 80%;
+}
+</style>
