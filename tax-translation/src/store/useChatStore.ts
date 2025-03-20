@@ -11,16 +11,12 @@ export const useChatStore = defineStore("chatStore", () => {
   });
 
   // #region Actions
-  function setActiveFile(file: any) {
-    state.activeFile = file;
-  }
   function addMessage(msg: string) {
     state.receivedMessage.push(msg);
   }
 
   return {
     addMessage,
-    setActiveFile,
     state,
     getMessage,
   };
