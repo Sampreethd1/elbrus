@@ -1,6 +1,6 @@
 
 <template>
-    <div class="w-2/6 m-4 bg-grey-200">
+    <div class="m-4 bg-grey-200">
         <div class="flex-col gap-4 align-middle flex-wrap mb-4">
             <div class="">
                 <DocumentSection @showModal="showModal($event)"></DocumentSection>
@@ -32,7 +32,7 @@
 import { ref } from 'vue';
 import DocumentSection from './DocumentSection.vue';
 import { notSupportedFiles } from '../utility/helper';
-import { VFileUploadItem, VButton, VCard  } from "@oneport/core-ui";
+import { VFileUploadItem, VButton  } from "@oneport/core-ui";
 
 const selectedFile = ref<File | null>(null);
 const fileUrl = ref<string | null>(null);
