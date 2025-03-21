@@ -6,9 +6,7 @@
     </header>
     <div class="content-wrapper">
       <main class="main-content">
-        <div class="text-line"></div>
-        <div class="text-line"></div>
-        <div class="text-line"></div>
+        <MessageViewer v-if="getMessage && getMessage.length" />
       </main>
       <div class="resizer" @mousedown="startResizing"></div>
       <aside class="sidebar">
@@ -16,28 +14,39 @@
       </aside>
     </div>
     <footer class="footer">
-      <div class="progress-bar"></div>
+      <ChatWindow />
+      <!-- <div class="progress-bar"></div> -->
     </footer>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onBeforeUnmount } from 'vue';
-import DocumentLayout from './components/DocumentLayout.vue';
+import { ref, onMounted, onBeforeUnmount } from "vue";
+import DocumentLayout from "./components/DocumentLayout.vue";
+
+import { storeToRefs } from "pinia";
+import ChatWindow from "@/components/ChatWindow.vue";
+import MessageViewer from "@/components/MessageViewer.vue";
+import { useChatStore } from "@/store/useChatStore";
+
+const chatStore = useChatStore();
+const { getMessage } = storeToRefs(chatStore);
 
 const isResizing = ref(false);
 
 const startResizing = (event: MouseEvent) => {
   isResizing.value = true;
-  document.addEventListener('mousemove', resize);
-  document.addEventListener('mouseup', stopResizing);
+  document.addEventListener("mousemove", resize);
+  document.addEventListener("mouseup", stopResizing);
 };
 
 const resize = (event: MouseEvent) => {
   if (isResizing.value) {
-    const contentWrapper = document.querySelector('.main-content') as HTMLElement;
-    const sidebar = document.querySelector('.sidebar') as HTMLElement;
-    const container = document.querySelector('.content-wrapper') as HTMLElement;
+    const contentWrapper = document.querySelector(
+      ".main-content"
+    ) as HTMLElement;
+    const sidebar = document.querySelector(".sidebar") as HTMLElement;
+    const container = document.querySelector(".content-wrapper") as HTMLElement;
 
     const containerRect = container.getBoundingClientRect();
     const newWidth = event.clientX - containerRect.left;
@@ -49,16 +58,16 @@ const resize = (event: MouseEvent) => {
 
 const stopResizing = () => {
   isResizing.value = false;
-  document.removeEventListener('mousemove', resize);
-  document.removeEventListener('mouseup', stopResizing);
+  document.removeEventListener("mousemove", resize);
+  document.removeEventListener("mouseup", stopResizing);
 };
 
 onMounted(() => {
-  document.addEventListener('mouseup', stopResizing);
+  document.addEventListener("mouseup", stopResizing);
 });
 
 onBeforeUnmount(() => {
-  document.removeEventListener('mouseup', stopResizing);
+  document.removeEventListener("mouseup", stopResizing);
 });
 </script>
 
@@ -128,12 +137,6 @@ onBeforeUnmount(() => {
   text-align: center;
 }
 
-.text-line {
-  height: 20px;
-  background-color: #ccc;
-  margin-bottom: 10px;
-  width: 80%;
-}
 
 .progress-bar {
   height: 20px;
