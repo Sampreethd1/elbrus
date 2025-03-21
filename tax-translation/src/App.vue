@@ -1,21 +1,30 @@
 <template>
   <div class="container1">
-    <header class="header">
-      <h1>Title</h1>
-      <p>Project Info</p>
+    <header class="border-b p-2">
+      <div class="flex gap-2 items-center">
+        <img src="../assets/logo.svg" />
+        <span class="font-medium logo-text">ONE PORT</span>
+      </div>
+      <!-- <p>Project Info</p> -->
     </header>
     <div class="content-wrapper">
       <main class="main-content">
-        <MessageViewer v-if="getMessage && getMessage.length" />
+        <!-- <MessageViewer v-if="getMessage && getMessage.length" /> -->
+        <DocumentLayout></DocumentLayout>
       </main>
-      <div class="resizer" @mousedown="startResizing"></div>
+      <!-- <div class="resizer" @mousedown="startResizing"></div>
       <aside class="sidebar">
         <DocumentLayout></DocumentLayout>
-      </aside>
+      </aside> -->
     </div>
-    <footer class="footer">
-      <ChatWindow />
+    <div class="footer">
+      <!-- <ChatWindow /> -->
       <!-- <div class="progress-bar"></div> -->
+    </div>
+    <footer class="border-t p-2 mt-4">
+      <div class="flex justify-center">
+        <span class="text-icon-disabled text-[12px]">Ignition Hackathon 2025 🤖</span>
+      </div>
     </footer>
   </div>
 </template>
@@ -91,7 +100,8 @@ onBeforeUnmount(() => {
   padding-left: 30px;
   background-color: #f0f0f0;
   border-bottom: 1px solid #ccc;
-  text-align: left; /* Left align the text */
+  text-align: left;
+  /* Left align the text */
 }
 
 .content-wrapper {
@@ -105,6 +115,11 @@ onBeforeUnmount(() => {
   padding: 10px;
   background-color: #fafafa;
   border-right: 1px solid #ccc;
+}
+
+.logo-text {
+  color: darkslateblue;
+  font-weight: bold;
 }
 
 .resizer {
