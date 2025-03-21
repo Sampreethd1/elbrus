@@ -1,5 +1,4 @@
-import axios from 'axios';
-import { BlockBlobClient, RestError } from "@azure/storage-blob";
+import { BlockBlobClient } from "@azure/storage-blob";
 
 
 
@@ -13,7 +12,8 @@ export const upload = async (file:any ) => {
     const response = await blockBlobClient.uploadData(file[0], {
         blockSize: 400 * 1024,
         concurrency: 20, // 20 concurrency
-        onProgress: (ev: any) => {             
+        onProgress: (ev: any) => { 
+          console.log(ev)            
         },
         blobHTTPHeaders: {
           blobContentType: 'application/pdf',
