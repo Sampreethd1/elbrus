@@ -8,9 +8,16 @@
       <!-- <p>Project Info</p> -->
     </header>
     <div class="content-wrapper">
-      <main class="main-content">
+      <main class="main-content p-2">
+        <h1 class="py-2 font-medium logo-text">Tax Translator: Simplifying Tax Language</h1>
+
+        <span class="pb-2 description">Tax Translator is an intuitive app designed to break down complex tax terminology and jargon into easy to understand language.
+          Whether you're an individual taxpayer or a business owner, app helps you naivgate the complexities of tax documents and filings with clarity.
+        </span>
         <!-- <MessageViewer v-if="getMessage && getMessage.length" /> -->
-        <DocumentLayout></DocumentLayout>
+        <div class="main-content">
+          <DocumentLayout></DocumentLayout>
+        </div>
       </main>
       <!-- <div class="resizer" @mousedown="startResizing"></div>
       <aside class="sidebar">
@@ -33,21 +40,21 @@
 import { ref, onMounted, onBeforeUnmount } from "vue";
 import DocumentLayout from "./components/DocumentLayout.vue";
 
-import { storeToRefs } from "pinia";
-import ChatWindow from "@/components/ChatWindow.vue";
-import MessageViewer from "@/components/MessageViewer.vue";
-import { useChatStore } from "@/store/useChatStore";
+// import { storeToRefs } from "pinia";
+// import ChatWindow from "@/components/ChatWindow.vue";
+// import MessageViewer from "@/components/MessageViewer.vue";
+// import { useChatStore } from "@/store/useChatStore";
 
-const chatStore = useChatStore();
-const { getMessage } = storeToRefs(chatStore);
+// const chatStore = useChatStore();
+// const { getMessage } = storeToRefs(chatStore);
 
 const isResizing = ref(false);
 
-const startResizing = (event: MouseEvent) => {
-  isResizing.value = true;
-  document.addEventListener("mousemove", resize);
-  document.addEventListener("mouseup", stopResizing);
-};
+// const startResizing = (event: MouseEvent) => {
+//   isResizing.value = true;
+//   document.addEventListener("mousemove", resize);
+//   document.addEventListener("mouseup", stopResizing);
+// };
 
 const resize = (event: MouseEvent) => {
   if (isResizing.value) {
@@ -110,11 +117,15 @@ onBeforeUnmount(() => {
   position: relative;
 }
 
+.description {
+  font-size: 12px;
+  margin-bottom: 1rem;
+}
+
 .main-content {
   flex: 2;
   padding: 10px;
   background-color: #fafafa;
-  border-right: 1px solid #ccc;
 }
 
 .logo-text {
