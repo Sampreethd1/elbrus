@@ -41,7 +41,8 @@ import { ref, onMounted, onBeforeUnmount } from "vue";
 import DocumentLayout from "./components/DocumentLayout.vue";
 
 // import { storeToRefs } from "pinia";
-// import ChatWindow from "@/components/ChatWindow.vue";
+//@ts-ignore
+import ChatWindow from "@/components/ChatWindow.vue";
 // import MessageViewer from "@/components/MessageViewer.vue";
 // import { useChatStore } from "@/store/useChatStore";
 
