@@ -2,7 +2,7 @@
   <div class="container1">
     <header class="border-b p-2">
       <div class="flex gap-2 items-center">
-        <img src="../assets/logo.svg" />
+        <img src="../src/assets/logo.svg" />
         <span class="font-medium logo-text">ONE PORT</span>
       </div>
       <!-- <p>Project Info</p> -->
@@ -18,7 +18,7 @@
       </aside> -->
     </div>
     <div class="footer">
-      <!-- <ChatWindow /> -->
+      <ChatWindow />
       <!-- <div class="progress-bar"></div> -->
     </div>
     <footer class="border-t p-2 mt-4">
