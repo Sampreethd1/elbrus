@@ -12,6 +12,9 @@
                             data-test="FileUploadItem" @click-delete="deleteFile(file)" @click-file="previewFile(file, file.name)" />
                     </li>
                 </ol>
+                <VButton v-if="uploadedFiles.length > 1" item-id="compare-button" variant="tertiary" v-on:click="compareFiles()">
+                    <template #default>Compare Files</template>
+                </VButton>
             </div>
         </div>
         <div  v-if="selectedFile" class="w-full draggable-preview">
@@ -31,17 +34,19 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import DocumentSection from './DocumentSection.vue';
+import {upload} from '../../api'
 import { notSupportedFiles } from '../utility/helper';
+// @ts-ignore
 import { VFileUploadItem, VButton  } from "@oneport/core-ui";
 
 const selectedFile = ref<File | null>(null);
-const fileUrl = ref<string | null>(null);
+const fileUrl = ref<string >('');
 let alertArray: Array<any> = [];
 const uploadedFiles = ref<Array<File>>([]);
 const previewedFileName = ref<string>('');
 
 
-const showModal = (files: FileList | null) => {
+const showModal = async (files: FileList | null) => {
     if (!files) return;
 
     let selectedFile: Array<File & { error?: string }> = Array.from(files);
@@ -55,6 +60,8 @@ const showModal = (files: FileList | null) => {
         });
     }
     if (selectedFile.length !== 0) {
+        const response = await upload(selectedFile);
+        console.log('Upload Response',response)
         uploadedFiles.value = [...uploadedFiles.value, ...selectedFile];
     }
 
@@ -68,7 +75,7 @@ const previewFile = (file: File, fileName: string) => {
 
 const closePreview = () => {
     selectedFile.value = null;
-    fileUrl.value = null;
+    fileUrl.value = '';
 };
 
 const deleteFile = (file: File) => {
@@ -76,6 +83,10 @@ const deleteFile = (file: File) => {
     if (selectedFile.value === file) {
         closePreview();
     }
+}
+
+const compareFiles = () => {
+    console.log('call compare api')
 }
 
 

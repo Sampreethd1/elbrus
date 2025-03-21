@@ -4,7 +4,7 @@ import { computed, reactive } from "vue";
 
 export const useChatStore = defineStore("chatStore", () => {
   // #region State
-  const state: any = reactive({ receivedMessage: [] });
+  const state:any = reactive({ receivedMessage: [] });
 
   // #region Getters
   const getMessage = computed(() => {

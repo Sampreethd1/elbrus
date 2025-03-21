@@ -9,7 +9,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@oneport/core-ui": "^0.10.3",
     "@vueuse/components": "^10.2.1",
+    "@azure/storage-blob": "^12.15.0",
     "axios": "^1.8.4",
     "pinia": "^3.0.1",
     "vue": "^3.4.38",

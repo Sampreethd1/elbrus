@@ -11,6 +11,7 @@
 </template>
 
 <script setup lang="ts">
+// @ts-ignore
 import { VFileUpload } from "@oneport/core-ui";
 import { resetFileExplorer } from "../utility/helper";
 import { ref } from "vue";
