@@ -69,12 +69,31 @@
             </div>
           </div>
           <div v-if="openChatPanel">
+            <div v-if="isLoading" class="mr-4 ml-4">
+            <div class="mt-2 h-4 rounded-sm animate-pulse" style="background-color: #f1f3f3"></div>
+            <div class="mt-2 h-4 rounded-sm animate-pulse" style="background-color: #f1f3f3"></div>
+            <div class="mt-2 h-4 rounded-sm animate-pulse" style="background-color: #f1f3f3"></div>
+            <div class="mt-2 h-4 rounded-sm animate-pulse" style="background-color: #f1f3f3"></div>
+            <div class="mt-2 h-4 rounded-sm animate-pulse" style="background-color: #f1f3f3"></div>
+            <div class="mt-2 h-4 rounded-sm animate-pulse" style="background-color: #f1f3f3"></div>
+            <div class="mt-2 h-4 rounded-sm animate-pulse" style="background-color: #f1f3f3"></div>
+            <div class="mt-2 h-4 rounded-sm animate-pulse" style="background-color: #f1f3f3"></div>
+            <div class="mt-2 h-4 rounded-sm animate-pulse" style="background-color: #f1f3f3"></div>
+            <div class="mt-2 h-4 rounded-sm animate-pulse" style="background-color: #f1f3f3"></div>
+            <div class="mt-2 h-4 rounded-sm animate-pulse" style="background-color: #f1f3f3"></div>
+            <div class="mt-2 h-4 rounded-sm animate-pulse" style="background-color: #f1f3f3"></div>
+            <div class="mt-2 h-4 rounded-sm animate-pulse" style="background-color: #f1f3f3"></div>
+            <div class="mt-2 h-4 rounded-sm animate-pulse" style="background-color: #f1f3f3"></div>
+            <div class="mt-2 h-4 rounded-sm animate-pulse" style="background-color: #f1f3f3"></div>
+            <div class="mt-2 h-4 rounded-sm animate-pulse" style="background-color: #f1f3f3"></div>
+        
            
-            <div>
+          </div>
+            <div v-else>
               <MessageViewer />
             </div>
-            <div class="option">
-              <div>
+            <div>
+              <div class="w-full">
                 <VInput
                   data-test="Input"
                   value=""
@@ -85,7 +104,7 @@
                 />
               </div>
 
-              <div>
+              <div class="w-full pt-2">
                 <VButton
                   item-id="storybook-button"
                   variant="primary"
@@ -117,11 +136,15 @@ const { getMessage } = storeToRefs(useChatStore());
 const newMessage = ref("");
 const isChatOpen = ref(false);
 const openChatPanel = ref(false);
+const isLoading = ref(false);
 
 const sendMessage = async () => {
+
   if (newMessage.value.trim()) {
+    isLoading.value = true;
     await chatStore.addMessage(newMessage.value);
     newMessage.value = "";
+    isLoading.value =false;
   }
 };
 
