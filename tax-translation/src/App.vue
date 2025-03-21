@@ -18,7 +18,7 @@
       </aside> -->
     </div>
     <div class="footer">
-      <!-- <ChatWindow /> -->
+      <ChatWindow />
       <!-- <div class="progress-bar"></div> -->
     </div>
     <footer class="border-t p-2 mt-4">
